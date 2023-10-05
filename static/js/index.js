@@ -1,5 +1,7 @@
 const app = () => {
-  const socket = io('localhost:3000', { transports: ['websocket'] });
+  const socket = io('https://chat-x3v5.onrender.com/', {
+    transports: ['websocket'],
+  });
   const msgInput = document.querySelector('.message-input');
   const msgList = document.querySelector('.messages-list');
   const sendBtn = document.querySelector('.send-btn');
@@ -8,7 +10,10 @@ const app = () => {
 
   const getMessages = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/chat', {});
+      const response = await axios.get(
+        'https://chat-x3v5.onrender.com/api/chat',
+        {},
+      );
       const data = response.data;
 
       renderMessages(data);
